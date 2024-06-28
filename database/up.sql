@@ -14,5 +14,5 @@ CREATE TABLE posts (
   post_content VARCHAR(32) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   user_id VARCHAR(32) NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) -- relación entre las tablas para crear integridad, y garantizar que exista el user antes de insertar
 );

@@ -34,6 +34,7 @@ func CheckAuthMiddleware(s server.Server) func(h http.Handler) http.Handler { //
 			}
 			tokenString := strings.TrimSpace(r.Header.Get("Authorization"))
 			// de acá arriba tomamos el token
+			// debemos mandar la referencia usando '&': &models.AppClaims{}, sin eso, estaria enviando direcamente el struct
 			_, err := jwt.ParseWithClaims(tokenString, &models.AppClaims{}, func(token *jwt.Token) (interface{}, error) { //models.AppClaims{} es del modelo que tengo en la carpeta models
 				return []byte(s.Config().JWTSecret), nil // el nil, significa que paso un error
 			})

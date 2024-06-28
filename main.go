@@ -39,7 +39,7 @@ func main() {
 func BindRoutes(s server.Server, r *mux.Router) {
 
 	api := r.PathPrefix("/api/v1").Subrouter()
-
+	// le digo que use el middleware para todas las rutas:
 	api.Use(middleware.CheckAuthMiddleware(s))
 
 	r.HandleFunc("/", handlers.HomeHandler(s)).Methods(http.MethodGet)
